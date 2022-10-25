@@ -19,7 +19,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email',
+        'username', 'password', 'api_token'
     ];
 
     /**
@@ -30,4 +30,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    /**
+     * Define one-user-to-many-todonotes relationship.
+     *
+     * @return void
+     */
+    public function todoNotes()
+    {
+        return $this->hasMany(TodoNote::class);
+    }
 }

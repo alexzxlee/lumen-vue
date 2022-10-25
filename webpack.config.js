@@ -3,7 +3,7 @@ const { VueLoaderPlugin } = require("vue-loader")
 
 module.exports = {
   mode: 'development',
-  entry: ['./resources/assets/js/app.js'],
+  entry: ['./resources/app.js'],
   output: {
     filename: 'app.js'
   },
@@ -23,6 +23,11 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader','css-loader']
+      },
+      {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: "javascript/auto"
       }
     ]
   },

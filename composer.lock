@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b7679051a46a653d975249b2df399b05",
+    "content-hash": "3c187267ed0b9bb9721d42dbb0f587ed",
     "packages": [
         {
             "name": "brick/math",
@@ -1632,7 +1632,7 @@
         },
         {
             "name": "illuminate/redis",
-            "version": "v9.35.1",
+            "version": "v9.36.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/redis.git",
