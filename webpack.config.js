@@ -25,9 +25,9 @@ module.exports = {
         use: ['style-loader','css-loader']
       },
       {
-          test: /\.mjs$/,
-          include: /node_modules/,
-          type: "javascript/auto"
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: "javascript/auto"
       }
     ]
   },

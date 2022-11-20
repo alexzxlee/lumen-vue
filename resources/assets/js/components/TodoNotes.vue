@@ -1,9 +1,9 @@
 <template>
-    <form @submit.prevent="addTodo">
-        <input v-model="newTodo">
-        <button>Add Todo</button>
-    </form>
     <div>
+        <form @submit.prevent="addTodo">
+            <input v-model="newTodo">
+            <button>Add Todo</button>
+        </form>
         <ol>
             <li v-for="todonote in filteredTodos" :key="todonote.id">
                 <input type="checkbox" v-model="todonote.done" @click="toggleComplete(todonote)">
@@ -11,27 +11,25 @@
                 <button @click="removeTodo(todonote)">Delete</button>
             </li>
         </ol>
+        <button @click="hideCompleted = !hideCompleted">
+            {{ hideCompleted ? 'Show all' : 'Hide completed' }}
+        </button>
     </div>
-    <button @click="hideCompleted = !hideCompleted">
-        {{ hideCompleted ? 'Show all' : 'Hide completed' }}
-    </button>
     <br /><br />
     <div v-if="apiErrorMessage">
-    API error message: <pre>{{ apiErrorMessage }}</pre>
+        API error message: <pre>{{ apiErrorMessage }}</pre>
     </div>
 </template>
 
 <script>
 export default {
-    props: {
-        apiToken: String
-    },
     data() {
         return {
             apiErrorMessage: '',
             newTodo: '',
             todonotes: null,
-            hideCompleted: false
+            hideCompleted: false,
+            apiToken: ''
         }
     },
     created() {
@@ -44,6 +42,7 @@ export default {
     },
     methods: {
         getTodoNotes() {
+            this.apiToken = localStorage.getItem('api_token')
             axios.get('/todonotes?api_token=' + this.apiToken).then(response => {
                 let todos = response.data.todonotes
                 response.data.todonotes.forEach((todo, index) => {

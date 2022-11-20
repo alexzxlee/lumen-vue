@@ -60,6 +60,7 @@ $router->put('/todonotes/{id}/complete', 'TodoNoteController@complete');
 // Mark a todo note as incomplete.
 $router->put('/todonotes/{id}/incomplete', 'TodoNoteController@incomplete');
 
+// '/{any?}/' 
 $router->get('/{vue:[\/\w\.-]*}', function() {
     return view('app');
 });
